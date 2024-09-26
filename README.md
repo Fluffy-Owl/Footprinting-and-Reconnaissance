@@ -149,16 +149,58 @@ Photon is a Python script used to crawl a given target URL to obtain information
 3. `python3 photon.py -h` to view the list of options that Photon provides.
 4. `python3 photon.py -u http://www.certifiedhacker.com` to crawl the target website for internal, external and scripts URLs. `-u` specifies the target website (here, www.certifiedhacker.com).
 
-Now you realised taht the filed are saved in the photon folder. Navigate to the directory through 'places'.
+Now you realised taht the filed are saved in the photon folder. Navigate to the directory through 'places'. Places > Home Folder > Attacker > Photon > www.certifiedhacker.com. Select the external.txt. You will see the URLs.
 ![image](https://github.com/user-attachments/assets/756953f5-3e38-49fa-a2b3-f45bafb1166e)
 
+Now try this:
+1. `python3 photon.py -u http://www.certifiedhacker.com -l 3 -t 200 --wayback` to crawl the target website using URLs from archive.org. `-u` specifies the target website (here, www.certifiedhacker.com), `-l` specifies level to crawl (here, 3), `-t` specifies number of threads (here, 200), `--wayback` specifes using URLs from archive.org as seeds.
 
+**3. Gather Information About a Target Website using _Central Ops_**
+CentralOps (centralops.net) is a free online network scanner that investigates domains and IP addresses, DNS records, traceroute, nslookup, whois searches, etc.
 
+1. open Mozilla
+2. https://centralops.net
+3. enter the target website eg: www.certifiedhacker.com
 
+You can also use tools such as Website Informer (https://website.informer.com), Burp Suite (https://portswigger.net), Zaproxy (https://www.zaproxy.org), etc. to perform website footprinting on a target website.
 
+**4. Extract a Company’s Data using _Web Data Extractor_**
+Web data extraction is the process of extracting data from web pages available on the company’s website.
 
+1. In the Windows 11 machine, navigate to E:\CEH-Tools\CEHv12 Module 02 Footprinting and Reconnaissance\Web Spiders\Web Data Extractor and double-click wdepro.exe.
+2. Install it.
+3. Search on the search icon `Web Data Extractor Pro`. Open it up.
+4. Click new session.
+5. Write the target URL in the `Start URL field`. Click Start!
+6. Web Data Extractor will start collecting information (Session, Meta tags, Emails, Phones, Faxes, Links, and Domains).
+7. Go to Results tab and see.
+8. Select the Meta Tag tab to view the URL, Title, Keywords, Description, Host, Domain, page size, etc.
+9. Select the Email tab to view information related to emails such as Email address, Name, URL, Title, etc.
+10. Select the Phone tab to view the Phone, Source, Tag, URL, etc.
 
+You can also use other web spiders such as ParseHub (https://www.parsehub.com), SpiderFoot (https://www.spiderfoot.net), etc. to extract the target organization’s data.
 
+**5. Mirror a Target Website using _HTTrack Web Site Copier_**
+HTTrack is an offline browser utility that downloads a website from the Internet to a local directory, builds all directories recursively, and transfers HTML, images, and other files from the webserver to another computer.
+
+Here, we will use the HTTrack Web Site Copier tool to mirror the entire website of the target organization, store it in the local system drive, and browse the local website to identify possible exploits and vulnerabilities.
+
+1. Search for `WinHTTrack Website Copier` in the search icon and launch it.
+2. Do a new project.
+3. Enter the name of the project (here, Test Project) in the New project name: field. Select the Base path: to store the copied files; click Next >.
+4. Enter a target URL (here, https://www.certifiedhacker.com) in the Web Addresses: (URL) field and click Set options….
+5. WinHTTrack window appears, click the Scan Rules tab and select the checkboxes for the file types as shown in the following screenshot; click OK. [all]
+6. Click the Next > button.
+7. By default, the radio button will be selected for Please adjust connection parameters if necessary, then press FINISH to launch the mirroring operation. Check Disconnect when finished and click `Finish` to start mirroring the website.
+8. Once the site mirroring is completed, WinHTTrack displays the message Mirroring operation complete; click on `Browse Mirrored Website`.
+9. If the How do you want to open this file? pop up appears, select any web browser and click OK.
+10. Once done with your analysis, close the browser window and click Finish on the WinHTTrack window to complete the process and click on EXIT to close the tool.
+
+*If the webpage does not open, navigate to the directory where you mirrored the website and open index.html with any browser.
+
+You can also use other mirroring tools such as Cyotek WebCopy (https://www.cyotek.com), etc. to mirror a target website.
+
+**6. Gather Information About a Target Website using GRecon**
 
 
 
