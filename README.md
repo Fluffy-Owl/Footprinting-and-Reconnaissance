@@ -201,13 +201,28 @@ Here, we will use the HTTrack Web Site Copier tool to mirror the entire website 
 You can also use other mirroring tools such as Cyotek WebCopy (https://www.cyotek.com), etc. to mirror a target website.
 
 **6. Gather Information About a Target Website using GRecon**
+GRecon is a Python tool that can be used to run Google search queries to perform reconnaissance on a target to find subdomains, sub-subdomains, login pages, directory listings, exposed documents, and WordPress entries.
 
+1. `sudo su`
+2. `cd GRecon`
+3. `python3 grecon.py`
+4. GRecon initializes, in the **Set Target (site.com):** field type `certifiedhacker.com` and press **Enter**.
 
+GRecon searches for available subdomains, sub-subdomains, login pages, directory listings, exposed documents, WordPress entries and pasting sites and displays the results.
 
+**7. Gather a Wordlist from the Target Website using CeWL**
 
+1. `sudo su`
+2. `cd`
+3. `cewl -d 2 -m 5 https://www.certifiedhacker.com` `-d` represents the depth to spider the website (here, 2) and `-m` represents minimum word length (here, 5).
+4. or `cewl -w wordlist.txt -d 2 -m 5 https://www.certifiedhacker.com` `-w` Write the output to the file (here, wordlist.txt)
+5. By default, the wordlist file gets saved in the root directory. Type `pluma wordlist.txt` and press Enter to view the extracted wordlist.
+6. Type `cewl --help` and press Enter in the parrot terminal to view the list of options that cewl provides.
 
+This wordlist can be used further to perform brute-force attacks against the previously obtained emails of the target organization’s employees.
 
-
+---
+# Perform Email Footprinting
 
 
 
