@@ -416,14 +416,165 @@ Until now, we have obtained contacts related to the domains. Note down these con
 
 **2. Maltego**
 
+1. `sudo maltego`
+2. A Welcome to Maltego wizard appears on the Maltego GUI; select **MALTEGO ID** and click **Next**.
+3. In the next page make sure that O**nline Activation (Default) radio button** is selected. Click **Next**.
+4. As the Configure Maltego window appears along with a LICENSE AGREEMENT form, check the **Accept** checkbox and click **Next**.
+5. You will be redirected to the **Login Link Options** section. **Copy the link** under the **Open the link below to Log In to Maltego** .
+6. Now, open the **Firefox** browser and **paste** the copied link in the new tab. **Sign In** to Maltego page appears; click **CREATE ID**.
+7. In the Create Maltego ID page, **enter the required details** and click **CONTINUE**.
+8. A **Create Maltego ID** page appears, enter **your details** and click **CONTINUE**.
+9. Create a strong password to authenticate youreslf and click **CONTINUE**. After creating a password, Verify Email page appears; **verify ypur email**.
+10. Sign in.
+11. **Minimize** the **web browser** and **go back to the setup wizard** and Browser login was successful tab appears in Login section, click **Next >**.
+12. click **Next >**
+13. click **Next >**
+14. click **Next >**
+15. click **Next >**
+16. In the Terms and Conditions section, **check the box** and click **Next >**.
+17. **Next >**
+18. **Next >**
+19. **Next >**
+20. The Maltego Community Edition window along with the New Graph (1) window appears, as shown in the screenshot.
+![image](https://github.com/user-attachments/assets/cf6cdee0-3a21-4a40-a618-466f67d705f4)
 
+21. In the left-pane of Maltego GUI, you can find the **Entity Palette box**, which contains a list of default built-in transforms. In the **Infrastructure** node under **Entity Palette**, observe a list of entities such as AS, DNS Name, Domain, IPv4 Address, URL, Website, etc.
+22. **Drag** the Website entity onto the New Graph (1) window.
+23. The entity appears on the new graph, with the **www.paterva.com** URL selected by default.
+24. **Double-click** the name www.paterva.com and change the domain name to **www.certifiedhacker.com**; press **Enter**.
+25. Right-click the entity and select **All Transforms**.
+26. The Run Transform(s) list appears; click **To Domains [DNS]**.
+27. Right-click the **certifiedhacker.com** entity and select **All Transforms** ---> **To DNS Name [Using Name Schema diction…]**.
+28. Observe the status in the progress bar. This transform will attempt to test various name schemas against a domain and try to identify a specific name schema for the domain, as shown in the following screenshot.
+29. After identifying the name schema, attackers attempt to simulate various exploitation techniques to gain sensitive information related to the resultant name schemas. For example, an attacker may implement a brute-force or dictionary attack to log in to **ftp.certifiedhacker.com** and gain confidential information.
+30. Select only the name schemas by dragging and deleting them.
+31. Right-click the **certifiedhacker.com** entity and select **All Transforms** --> **To DNS Name - SOA (Start of Authority)**.
+32. This returns the primary name server and the email of the domain administrator, as shown in the following screenshot.
+33. By extracting the SOA related information, attackers attempt to find vulnerabilities in their services and architectures and exploit them.
+34. Select both the name server and the email by dragging and deleting them.
+35. Right-click the **certifiedhacker.com entity** and select **All Transforms** --> **To DNS Name - MX (mail server)**.
+36. This transform returns the mail server associated with the certifiedhacker.com domain.
+37. By identifying the mail exchanger server, attackers attempt to exploit the vulnerabilities in the server and, thereby, use it to perform malicious activities such as sending spam e-mails.
+38. Select only the mail server by dragging and deleting it.
+39. Right-click the **certifiedhacker.com entity** and select **All Transforms** --> **To DNS Name - NS (name server)**.
+40. This returns the name servers associated with the domain, as shown in the following screenshot.
+41. By identifying the primary name server, an attacker can implement various techniques to exploit the server and thereby perform malicious activities such as DNS Hijacking and URL redirection.
+42. Select both the domain and the name server by dragging and deleting them.
+43. Right-click the entity and select **All Transforms** --> **To IP Address [DNS]**.
+44. This displays the IP address of the website, as shown in the following screenshot.
+45. By obtaining the IP address of the website, an attacker can simulate various scanning techniques to find open ports and vulnerabilities and, thereby, attempt to intrude in the network and exploit them.
+46. Right-click the **IP address entity** and select **All Transforms** --> **To location [city, country]**.
+47. This transform identifies the geographical location of the IP address, as shown in the following screenshot.
+48. By obtaining the information related to geographical location, attackers can perform social engineering attacks by making voice calls (vishing) to an individual in an attempt to leverage sensitive information.
+49. Now, right-click the **www.certifiedhacker.co**m website entity and select **All Transforms** --> **To Domains [DNS]**. The domains corresponding to the website display.
+50. Right-click the domain entity (**certifiedhacker.com**) and select **All Transform** --> **To Entities from WHOIS [IBM Watson]**.
+51. This transform returns the entities pertaining to the owner of the domain, as shown in the following screenshot.
 
+![image](https://github.com/user-attachments/assets/982f3cf7-1a25-4377-a78a-a25dfc5e2256)
 
+52. By obtaining this information, you can exploit the servers displayed in the result or simulate a brute force attack or any other technique to hack into the admin mail account and send phishing emails to the contacts in that account.
+53. Apart from the aforementioned methods, you can perform footprinting on the critical employee from the target organization to gather additional personal information such as email addresses, phone numbers, personal information, image, alias, phrase, etc.
+54. In the left-pane of the Maltego GUI, click the **Personal** node under **Entity Palette** to observe a list of entities such as Email Address, Phone Numbers, Image, Alias, Phrase, etc.
+55. Apart from the transforms mentioned above, other transforms can track accounts and conversations of individuals who are registered on social networking sites such as Twitter. Extract all possible information.
+56. By extracting all this information, you can simulate actions such as enumeration, web application hacking, social engineering, etc., which may allow you access to a system or network, gain credentials, etc.
+57. This concludes the demonstration of footprinting a target using Maltego.
 
+**3. OSRFramework**
 
+1. `sudo su`
+2. `cd`
+3. Use **domainfy** to check with the existing domains using words and nicknames. Type `domainfy -n [Domain Name] -t all` (here, the target domain name is ECCOUNCIL) and press **Enter**.  `-n` specifies a nickname or a list of nicknames to be checked. `-t` specifies a list of top-level domains where nickname will be searched.
 
+The tool will retrieve all the domains along with their IP addresses related to the target domain. Using this information, attackers can further find vulnerabilities in the subdomains of the target website and launch web application attacks.
 
+4. Use **searchfy** to check for the existence of a given user details on different social networking platforms such as Github, Instagram and Keyserverubuntu. Type `searchfy -q "target user name or profile name"` (here, the target user name or profile is Tim Cook and it is searched in all the social media platforms) and press **Enter**.  `-q` specifies the query or list of queries to be performed.
+5. The searchfy will search the user details in the social networking platforms and will provide you with the existence of the user. These profile links of the target user can be used by the attackers to perform social engineering attacks.
+6. Similarly, you can use following OSRFramework packages to gather more information about the target:
 
+- usufy - Gathers registered accounts with given usernames.
+- mailfy – Gathers information about email accounts
+- phonefy – Checks for the existence of a given series of phones
+- entify – Extracts entities using regular expressions from provided URLs
+
+**4. FOCA**
+
+1. To launch FOCA, navigate to Z:\CEHv12 Module 02 Footprinting and Reconnaissance\Footprinting Tools\FOCA and double-click FOCA.exe.
+2. Create a new project by navigating to **Project** and click **New project** on the menu bar.
+3. The FOCA new project wizard appears, follow the steps below:
+
+- Enter a project name in the Project name field (here, Project of www.eccouncil.org).
+- Enter the domain website in the Domain website field (here, www.eccouncil.org).
+- You can leave the optional Alternative domains field empty.
+- Under the Folder where to save documents field, click on the Folder icon. When the Browse For Folder pop up window appears, select the location to save the document that is extracted by FOCA (here, Desktop) and click OK.
+- Leave the other settings to default and click the **Create** button.
+
+  4. To extract the information of the targeted domain, select all three search engines (Google, Bing, and DuckDuckGo) present under **Search engines** section. Similarly, under Extensions section, **click All option** to choose all the given extensions and then click the **Search All button**.
+  5. The Search All button automatically toggles the Stop button, and begins gathering information on the target domain in the middle pane.
+  6. After the scans are completed, the Stop button automatically toggles back to the Search All button. The gathered result on the Metadata associated with the target domain appears.
+  7. To view the file information stored in the sub-domain, right-click on **any URL** and click Link(s) --> **Open in browser** from the context menu.
+  ![image](https://github.com/user-attachments/assets/d8040182-bf89-4c26-bcea-45b68a82a7f5)
+ 
+  8. The extracted file from the domain by using FOCA appears on the web browser.
+  9. Navigate back to the **FOCA window** and click the **Network** node to expand the node in the left pane of the window to view the network structure.
+  10. If the domain has any of the associated Clients or Servers, it displays the related information.
+  11. Expand the **Domains** node and click on the target domain (here, eccouncil.org) to view the domain-related information.
+  12. In the right-pane, click **Crawling** tab and then click **Google crawling** button.
+ ![image](https://github.com/user-attachments/assets/7ed36043-7aca-4730-80a0-0ba5399de64f)
+
+  13. Google's crawling functionality begins crawling the target website. Once the crawling is completed, the results appear in the lower pane.
+  14. The results include the domains obtained through scanning along with their severity as low, medium or high is displayed, as shown in the screenshot. Using this information, attackers can further find vulnerabilities in the target domain and exploit them to launch web application attacks.
+  15. Now, expand the **Document Analysis** node; further expand the **Metadata Summary** node. Here, information regarding users, folders, printers, software, etc. is displayed.
+ 
+**5. BillCipher**
+
+1. `sudo su`
+2. `cd BillCipher`
+3. Now, type `python3 billcipher.py` and press **Enter** to launch the application.
+4. BillCipher application initializes. In the Are you want to collect information of website or IP address? option, type `website` and press **Enter**.
+5. In the Enter the website address option, type the target website URL (here, **www.certifiedhacker.com**) and press **Enter**.
+6. BillCipher displays various available options that you can use to gather information regarding a target website.
+7. In the What information would you like to collect? option, type `1` to choose the DNS Lookup option and press Enter.
+8. The result appears, displaying the DNS information regarding the target website.
+9. In the Do you want to continue? option, type `Yes` and press **Enter** to continue.
+10. Repeat and type `3`
+11. The result appears, displaying the **GeoIP Lookup** information of the target website.
+12. Repeat and type `4`
+13. The result appears, displaying the Subnet Lookup information of the target website.
+14. Repeat and type `6`
+15. The result appears, displaying a list of Visible links and Hidden links of the target website.
+16. Repeat and type `8`
+17. The result appears, displaying information regarding the HTTP header of the target website.
+18. Repeat and type `9`
+19. The result appears, displaying information regarding the IP address of the target website.
+ 
+**6. OSINT Framework**
+
+The OSINT Framework includes the following indicators with the available tools:
+
+(T) - Indicates a link to a tool that must be installed and run locally
+(D) - Google Dork
+(R) - Requires registration
+(M) - Indicates a URL that contains the search term and the URL itself must be edited manually
+
+1. https://osintframework.com/
+2. OSINT Framework website appears; you can observe the OSINT tree on the left side of screen.
+3. Clicking on any of the categories such as **Username, Email Address, or Domain Name** will make many useful resources appear on the screen in the form of a sub-tree.
+4. Click the **Username** category and click to expand the** Username Search Engines** and **Specific Sites** sub-categories.
+5. You can observe a list of OSINT tools filtered by sub-categories (**Username Search Engines** and **Specific Sites** sub-categories).
+6. From the list of available tools under the **Username Search Engines** category, click on the **NameCheckr tool** to navigate to the NameCheckr website.
+7. The **NameCheckr** website appears.
+8. Close the current tab to navigate back to the OSINT Framework webpage.
+9. Similarly, you can explore other tools from the list of mentioned tools under the **Username Search Engines** and **Specific Sites** sub-categories.
+10. Now, click the **Domain Name** category, and its sub-categories appear. Click to expand the **Whois Records** sub-category.
+11. A list of tools under the Whois Records sub-category appears; click the **Domain Dossier tool**.
+12. The **Domain Dossier** website appears.
+13. The Domain Dossier tool generates reports from public records about domain names and IP addresses to help solve problems, investigate cybercrime, or just to better understand how things are set up.
+14. Close the current tab to navigate back to the OSINT Framework webpage.
+15. Now, click the **Metadata** category and click the **FOCA** tool from a list of available tools.
+16. The **FOCA** website appears, displaying information about the tool along with its download link.
+17. Similarly, you can explore other available categories such as **Email Address**, **IP Address**, **Social Networks**, **Instant Messaging**, etc. and the tools associated with each category. Using these tools, you can perform footprinting on the target organization.
+
+You can also use footprinting tools such as Recon-Dog (https://www.github.com), Grecon (https://github.com), Th3Inspector (https://github.com), Raccoon (https://github.com), Orb (https://github.com), etc. to gather additional information related to the target company.
 
 
 
